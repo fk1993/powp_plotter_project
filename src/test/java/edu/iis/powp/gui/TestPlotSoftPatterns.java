@@ -47,6 +47,9 @@ public class TestPlotSoftPatterns
 		
 		IPlotter plotter = new PlotterAdapter();
 		context.addDriver("Buggy Simulator", plotter);
+		
+		IPlotter linePlotter = new LinePlotterAdapter();
+		context.addDriver("Special Line Plotter", linePlotter);
 
 		context.updateDriverInfo();
 	}
