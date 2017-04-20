@@ -1,6 +1,7 @@
 package edu.iis.powp.gui;
 
 import java.awt.EventQueue;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,6 +14,7 @@ import edu.iis.powp.app.Application;
 import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
 import edu.iis.powp.appext.ApplicationWithDrawer;
+import edu.iis.powp.command.CommandFactory;
 import edu.iis.powp.events.predefine.*;
 import edu.kis.powp.drawer.panel.DefaultDrawerFrame;
 import edu.kis.powp.drawer.panel.DrawPanelController;
@@ -36,6 +38,18 @@ public class TestPlotSoftPatterns
 		
 		FiguresJaneSelectTestFigureOptionListener figuresJaneselectTestFigureOptionListener = new FiguresJaneSelectTestFigureOptionListener();
 		context.addTest("Figure Jane", figuresJaneselectTestFigureOptionListener);
+		
+		CommandSelectTestFigureOptionListener rectCommand = 
+				new CommandSelectTestFigureOptionListener(CommandFactory.getRectangleCommand(-100, -100, 200, 300));
+		context.addTest("Rectangle", rectCommand);
+		
+		CommandSelectTestFigureOptionListener triangleCommand = 
+				new CommandSelectTestFigureOptionListener(CommandFactory.getTriangleCommand(-100, -100, 100, 0, 50, 150));
+		context.addTest("Triangle", triangleCommand);
+		
+		CommandSelectTestFigureOptionListener polygonCommand = 
+				new CommandSelectTestFigureOptionListener(CommandFactory.getPolygonCommand(new Point(-100, -100), new Point(50, -50), new Point(100, 0), new Point(150, 75), new Point(50, 150), new Point(-50, 100)));
+		context.addTest("Polygon", polygonCommand);
 	}
 
 	/**

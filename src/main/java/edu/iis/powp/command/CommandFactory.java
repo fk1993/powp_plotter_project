@@ -23,8 +23,10 @@ public class CommandFactory {
 		return cmd;
 	}
 	
-	public static ComplexCommand getPolygonCommand(int x, int y, Point... points){
+	public static ComplexCommand getPolygonCommand(Point p0, Point... points){
 		ComplexCommand cmd = new ComplexCommand();
+		int x = (int)p0.getX();
+		int y = (int)p0.getY();
 		cmd.add(new CommandSetPosition(x, y));
 		for(Point p: points)
 			cmd.add(new CommandDrawLineToPosition((int)p.getX(), (int)p.getY()));
